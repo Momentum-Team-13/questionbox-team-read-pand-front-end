@@ -7,6 +7,7 @@ function App() {
     <div className="textBox">
     <p>I'm a paragraph! and I'm inside a text box!</p>
     </div>
+    
     </div>
   );
 }
