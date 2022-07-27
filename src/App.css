@@ -5,24 +5,28 @@ h1 {
   font-family: 'Barlow Condensed', sans-serif;
   color: white;
   text-transform: uppercase;
+  margin-bottom: 0;
 }
 
 h2 {
   font-size: 3em;
   font-family: 'Barlow Condensed', sans-serif;
   color: white;
+  margin-bottom: 0;
 }
 
 h3 {
   font-size: 1.5em;
   font-family: sans-serif;
   color: white;
+  margin-bottom: 0;
 }
 
 p {
   color: black;
   font-family: sans-serif;
   font-size: 1.2em;
+  margin: .5em;
 }
 body {
   background-image: url('./images/branding/background.jpg');
@@ -37,9 +41,6 @@ body {
   margin: auto;
   background-image: url('./images/branding/grid.png');
   background-size: contain;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 1em;
   border-radius: 50px;
 }
