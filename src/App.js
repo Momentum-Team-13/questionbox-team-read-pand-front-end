@@ -1,14 +1,23 @@
 import './App.css';
 import { Link } from "react-router-dom";
+import dummy from './dummy-data.json'
 
 function App() {
   return (
-    <div className="wrap">
-    <h1>I'm an H1 Header </h1>
-    <div className="textBox">
-    <p>I'm a paragraph! and I'm inside a text box!</p>
+    <div className="App">
+    <button className="askButton">Ask a Question</button>
+       <div className="wrap">
+       <h1>Choose Your Category!</h1>
+       <div className="genreList">
+         {dummy.map(dummy => (
+           <div className="gameGenre"><a href={dummy.link} className="genreLink"><h2>{dummy.name}</h2></a></div>
+        ))}
+       </div>
+       
+
     </div>
     </div>
+ 
   );
 }
 
