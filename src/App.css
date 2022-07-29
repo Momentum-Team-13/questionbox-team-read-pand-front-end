@@ -1,0 +1,168 @@
+/* Global Styling */
+
+.App {
+  margin: auto;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 5em;
+  font-family: 'Barlow Condensed', sans-serif;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h2 {
+  font-size: 3em;
+  font-family: 'Barlow Condensed', sans-serif;
+  margin: .2em;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-family: sans-serif;
+  margin-bottom: 0;
+}
+
+p {
+  color: black;
+  font-family: sans-serif;
+  font-size: 1.2em;
+  margin: .5em;
+}
+body {
+  background-image: url('../public/images/branding/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #00D9FF;
+}
+
+.wrap {
+  background-color: #FE00F7;
+  max-width: 1000px;
+  margin: auto;
+  background-image: url('../public/images/branding/grid.png');
+  background-size: cover 100%;
+  padding: 1em;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.textBox {
+  background-color: white;
+  border-radius: 20px;
+  padding: 1em;
+  margin: 1em;
+}
+
+/* Home Page */
+
+.gameGenre {
+  background-color:white;
+  max-width: 500px;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  border-radius: 20px;
+  border: solid;
+}
+
+.gameGenre:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.gameGenre:active {
+  background-color: magenta;
+  color: black;
+}
+
+.genreLink {
+  color: black;
+
+}
+.genreLink:hover {
+  color: white;
+  
+}
+
+.genreList {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+/* Login Page */
+
+#login-form {
+  background-image: linear-gradient(blue 20%, #00D9FF 80%);
+  border: solid;
+  padding: 1em;
+  border-radius: 20px;
+  border-color: white;
+  max-width: 300px;
+  margin: 1em auto;
+}
+.controls {
+  font-size: 1.5em;
+  color: white;
+}
+
+.form-submit {
+  margin: .5em;
+}
+/* Buttons */
+.button {
+  background-color: #ffffff;
+  border: solid;
+  font-size: 1em;
+  text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0em 1em;
+}
+
+.askButton {
+  max-width: 900px;
+  padding: 0 5em;
+  border-radius: 15px;
+  font-size: 2.2em;
+  text-transform: uppercase;
+  border: solid;
+  background-color: white;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.askButton:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #000;
+}
+
+.askButton:active {
+  background-color: #FE00F7;
+  color: white;
+}
+
+
+.button:hover {
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #000;
+}
+
+.button:active {
+  background-color: #FE00F7;
+  color: white;
+}
+
+
+/* Mobile Sizing */
+
+@media screen and (max-width: 420px) {
+
+}
