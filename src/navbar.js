@@ -1,26 +1,30 @@
 import { Link } from "react-router-dom";
-import './navbar.css';
 
 export default function Navbar() {
     return (
         <>
             <div className="nav">
+            <div className="nav-logo">
+                            <img src="../images/branding/logo.png" alt="gitgud logo" />
+                        </div>
                 <div className="nav-content">
-                    <ul className="nav-items">
-                        <li className="nav-item">
+                    <div className="nav-items">
+                    
+                        <div className="nav-item">
                             <Link to={"/"}>Home</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/"}>User Question Page</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/"}>Ask a Question</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/login"}>Login/Sign Up</Link>
-                        </li>
+                        </div>
+                        <div className="nav-item">
+                            <Link to={"/"}>User Profile</Link>
+                        </div>
 
-                    </ul>
+                        <div className="nav-item">
+                            <Link to={"/"}>Ask a Question</Link>
+                        </div>
+                        <div className="nav-item">
+                            <Link to={"/login"}>Login/Sign Up</Link>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </>

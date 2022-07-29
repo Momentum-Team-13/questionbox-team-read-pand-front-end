@@ -9,6 +9,7 @@ a {
   text-decoration: none;
 }
 
+
 h1 {
   font-size: 5em;
   font-family: 'Barlow Condensed', sans-serif;
@@ -58,7 +59,59 @@ body {
   padding: 1em;
   margin: 1em;
 }
+/* Navbar */
 
+.nav-logo {
+  margin: auto;
+  text-align: center;
+}
+
+.nav-logo img {
+  width: 400px;
+}
+
+.nav {
+  position: static;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.nav-content {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  display: inline;
+  margin: .2em .5em;
+  background-color: magenta;
+  padding: 0.2em 1em;
+  border-radius: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2em;
+  border: solid;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #00D9FF;
+}
+
+.nav-item:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.nav-items {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 /* Home Page */
 
 .gameGenre {
@@ -163,6 +216,8 @@ body {
 
 /* Mobile Sizing */
 
-@media screen and (max-width: 420px) {
-
+@media screen and (max-width: 560px) {
+  .nav-items {
+    width: 200px;
+  }
 }

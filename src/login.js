@@ -10,7 +10,7 @@ export const Login = ({setAuth, token }) => {
     event.preventDefault()
     setError(null)
     axios
-      .post('https://drf-library-api.herokuapp.com/api/auth/token/login', {
+      .post('https://red-panda-question-box.herokuapp.com/api/auth/token/login', {
         username: username,
         password: password,
       })
