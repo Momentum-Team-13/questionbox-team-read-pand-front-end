@@ -23,7 +23,12 @@ export default function Navbar() {
                         <div className="nav-item">
                             <Link to={"/login"}>Login/Sign Up</Link>
                         </div>
-
+                        <div className="nav-item">
+                            <Link to={"/questions"}>Questions (Temp)</Link>
+                        </div>
+                        <div className="nav-item">
+                            <Link to={"/viewquestion"}>View Question</Link>
+                        </div>
                     </div>
                 </div>
             </div>

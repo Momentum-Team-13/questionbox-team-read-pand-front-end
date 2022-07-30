@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from './navbar';
 import Home from './home';
 import Login from './login'
+import Questions from './questions';
+import ViewQuestions from './viewQuestion';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" element="" />
         <Route path="/" element="" />
         <Route path="/login" element={<Login />} />
+        <Route path="/questions" element={<Questions />} />
+        <Route path="/viewquestion" element={<ViewQuestions />} />
       </Routes>
     </>
   );
