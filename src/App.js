@@ -4,10 +4,10 @@ import './App.css';
 import { Route, Routes } from "react-router-dom";
 import Navbar from './navbar';
 import Home from './home';
-import Login from './login'
+import Login from './login';
 import Questions from './questions';
 import ViewQuestions from './viewQuestion';
-import useLocalStorageState from 'use-local-storage-state'
+import useLocalStorageState from 'use-local-storage-state';
 
 function App() {
   const [token, setToken] = useLocalStorageState('libraryToken', null)
