@@ -1,10 +1,14 @@
 import axios from 'axios'
+import { Link } from "react-router-dom";
 import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 
-export const Login = ({setAuth, token }) => {
+export const Login = ({ setAuth, isLoggedIn }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+
+
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -19,6 +23,10 @@ export const Login = ({setAuth, token }) => {
         setAuth(username, token)
       })
   }
+  if (isLoggedIn) {
+    return <Navigate to="/" />
+  }
+
   return (
     <>  <div className="wrap">
      <h2>Log In</h2>
@@ -42,6 +50,7 @@ export const Login = ({setAuth, token }) => {
        </div>
        <div className="form-submit">
           <input type="submit" value="Log In" className="button" />
+          <Link to={"/"}><p className="new-user">New User? Create Account</p></Link>
         </div>
      </form>
     </div>
