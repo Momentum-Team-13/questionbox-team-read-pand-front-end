@@ -1,31 +1,8 @@
 import { Link } from "react-router-dom";
-import useLocalStorageState from 'use-local-storage-state'
-import axios from 'axios'
 
-export default function Navbar() {
-    const [token, setToken] = useLocalStorageState('libraryToken', null)
-    const [username, setUsername] = useLocalStorageState('libraryUsername', '')
 
-    const setAuth = (username, token) => {
-        setToken(token)
-        setUsername(username)
-      }
-      const handleLogout = () => {
-        axios
-          .post(
-            'https://red-panda-question-box.herokuapp.com/api/auth/token/logout',
-            {},
-            {
-              headers: {
-                Authorization: `Token ${token}`,
-              },
-            }
-          )
-          .then(() =>
-            setAuth('', null)
-          )
-      }
-      const isLoggedIn = username && token
+export default function Navbar({handleLogout}, {isLoggedIn}) {
+
       
     return (
         <>
@@ -46,16 +23,19 @@ export default function Navbar() {
                         <div className="nav-item">
                             <Link to={"/"}>Ask a Question</Link>
                         </div>
-                       
+                        {!isLoggedIn ? (<div onClick={() => {handleLogout()}} className="nav-item login">
+                        Logout
+                        </div>) : (<Link to={"/login"}> 
                         <div className="nav-item login">
-                        <Link to={"/login"}>{isLoggedIn && <div onClick={() => {handleLogout()}}>Logout</div>} {!isLoggedIn && "Login"}</Link>
-                        </div>
-                        <div className="nav-item">
-                            <Link to={"/questions"}>Questions (Temp)</Link>
-                        </div>
-                        <div className="nav-item">
-                            <Link to={"/viewquestion"}>View Question</Link>
-                        </div>
+                        Login
+                        </div></Link> ) }
+                    
+                         <Link to={"/questions"}><div className="nav-item">
+                           Questions (Temp)
+                        </div></Link>
+                         <Link to={"/viewquestion"}><div className="nav-item">
+                           View Question
+                        </div></Link>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,6 @@ import React, { useEffect, useState} from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-{/* <Link to={`/viewquestion/id or pk`}></Link> */}
 
 
 
@@ -13,7 +12,11 @@ export default function Questions({ token }) {
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/questions/`)
+            .get(`https://red-panda-question-box.herokuapp.com/api/questions/`,
+           { headers: {
+                Authorization: `Token ${token}`,
+              },
+    })        
             .then((res) => {
                 console.log(res);
                 setQuestions(res.data);

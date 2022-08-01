@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import {useParams, link} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 
 
-export default function ViewQuestions({ token }, {question}) {
+export default function ViewQuestions({ token }) {
     const {questionId} = useParams()
-    const [questions, setQuestions] = useState([]);
+    const [question, setQuestions] = useState([]);
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}`)
+            .get(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}`,
+            { headers: {
+                Authorization: `Token ${token}`,
+              },
+    })
             .then((res) => {
                 console.log(res);
                 setQuestions(res.data);
@@ -19,23 +23,19 @@ export default function ViewQuestions({ token }, {question}) {
 
     return (
         <div className="App">
+       
             <div className="wrap">
-                <h1>Question</h1>
+                <h1>{question.title}</h1>
                 <div className="genreList">
-                    {questions.length > 0 ?
-                        questions.map((question, index) => (
-                            <div key={index} className="gameGenre"><h2>{question.description}</h2></div>
-                        ))
-                        :
-                        <h3>No Results Found</h3>}
-                </div>
 
+                </div>
+ 
 
 
 
 
 
             </div>
-        </div >
+        </div>
     )
 }
