@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; 
 import axios from "axios";
 
 
@@ -31,8 +31,8 @@ export default function ViewQuestions({ token }) {
                 <h1>Question</h1>
                 <div className="genreList">
                     {questions.length > 0 ?
-                        questions.map(question => (
-                            <div className="gameGenre"><h2>{question.description}</h2></div>
+                        questions.map((question, index) => (
+                            <div key={index} className="gameGenre"><h2>{question.description}</h2></div>
                         ))
                         :
                         <h3>No Results Found</h3>}
