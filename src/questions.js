@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Link } from 'react';
+import React, { useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 {/* <Link to={`/viewquestion/id or pk`}></Link> */}
@@ -34,8 +35,8 @@ export default function Questions({ token }) {
                     {questions.length > 0 ?
                         questions.map((question, index) => (
                             <div className="gameGenre">
-                                    <h2 key={index}>
-                                        {question.title}
+                           <h2 key={index}>
+                           <Link to={`/question/${question.pk}`} > {question.title}</Link>
                                     </h2>
                             </div>
                         ))

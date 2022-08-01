@@ -6,7 +6,7 @@ import Navbar from './navbar';
 import Home from './home';
 import Login from './login';
 import Questions from './questions';
-import ViewQuestions from './viewQuestion';
+import ViewQuestion from './viewQuestion';
 import useLocalStorageState from 'use-local-storage-state';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element="" />
         <Route path="/login" element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />} />
         <Route path="/questions" element={<Questions />} />
-        <Route path="/viewquestion" element={<ViewQuestions />} />
+        <Route path="/question/:questionId" element={<ViewQuestion />} />
         {/* path="/question/:questionId" */}
       </Routes>
     </>

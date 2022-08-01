@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-
+import {useParams, link} from 'react-router-dom'
 
 const testToken = '9f72630224a8f9d8495aedbd2d976da0dd8c9018';
 
@@ -11,18 +11,18 @@ axios.interceptors.request.use(
     }
 );
 
-export default function ViewQuestions({ token }) {
-
+export default function ViewQuestions({ token }, {question}) {
+    const {questionId} = useParams()
     const [questions, setQuestions] = useState([]);
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/questions/`)
+            .get(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}`)
             .then((res) => {
                 console.log(res);
                 setQuestions(res.data);
             });
-    }, [token]);
+    }, [token, questionId]);
 
 
     return (
