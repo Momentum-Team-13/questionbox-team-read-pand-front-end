@@ -94,6 +94,19 @@ body {
   border: solid;
 }
 
+.login {
+  background-color: white;
+}
+
+.login:hover {
+  background-color: black!important;
+  color: white!important;
+}
+
+.login:active {
+  background-color:#FE00F7!important;
+}
+
 .nav-item:hover {
   cursor: pointer;
   font-weight: bold;
@@ -168,6 +181,13 @@ body {
 
 .form-submit {
   margin: .5em;
+}
+
+.new-user:hover {
+  color:#ffffff;
+}
+.new-user:active {
+  color:#FE00F7;
 }
 /* Buttons */
 .button {
