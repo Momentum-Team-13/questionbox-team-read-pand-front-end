@@ -2,14 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import {useParams, link} from 'react-router-dom'
 
-const testToken = '9f72630224a8f9d8495aedbd2d976da0dd8c9018';
-
-axios.interceptors.request.use(
-    config => {
-        config.headers.authorization = `token ${testToken}`;
-        return config;
-    }
-);
 
 export default function ViewQuestions({ token }, {question}) {
     const {questionId} = useParams()

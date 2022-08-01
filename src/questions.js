@@ -4,14 +4,7 @@ import axios from "axios";
 
 {/* <Link to={`/viewquestion/id or pk`}></Link> */}
 
-const testToken = '9f72630224a8f9d8495aedbd2d976da0dd8c9018';
 
-axios.interceptors.request.use(
-    config => {
-        config.headers.authorization = `token ${testToken}`;
-        return config;
-    }
-);
 
 
 export default function Questions({ token }) {
