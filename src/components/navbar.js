@@ -43,21 +43,21 @@ export default function Navbar() {
               User Profile
             </div></Link>
 
-            <Link to={"/askquestion"}>
-              <div className="nav-item">
-                Ask a Question
-              </div>
-            </Link>
+            <Link to={"/askquestion"}><div className="nav-item">
+              Ask a Question
+            </div></Link>
 
-            <Link to={"/viewquestion"}>
+            {/* <Link to={"/viewquestion"}>
               <div className="nav-item">
                 View Question
-              </div></Link>
+              </div></Link> */}
+
             {!isLoggedIn && <Link to={"/login"}>
               <div className="nav-item login">
                 Login
               </div>
             </Link>}
+
             {isLoggedIn &&
               <div className="nav-item login" onClick={() => { handleLogout() }}>
                 Logout

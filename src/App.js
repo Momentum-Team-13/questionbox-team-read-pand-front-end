@@ -31,7 +31,6 @@ function App() {
         <Route path="/" element={<Home token={token} />} />
         <Route path="/" element="" />
         <Route path="/askquestion" element={<AskQuestion token={token} />} />
-        <Route path="/" element="" />
         <Route path="/new-user" element={<NewUser/>} />
         <Route path="/login" element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />} />
         <Route path="/questions" element={<Questions token={token} />} />
