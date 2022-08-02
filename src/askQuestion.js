@@ -1,10 +1,9 @@
 import axios from 'axios';
-// import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
 
-export default function AskQuestion({ token, isLoggedIn }) {
+export default function AskQuestion({ token }) {
 
     const [questionTitle, setQuestionTitle] = useState('')
 
@@ -58,14 +57,9 @@ export default function AskQuestion({ token, isLoggedIn }) {
             })
     }
 
-
-    // Handle if user can post question. Which option is better?
-    // if (!isLoggedIn) {
-    //     return <Navigate to="/login" />
-    // }
-    // if (!token) {
-    //     return <Navigate to="/login" />
-    // }
+    if (!token) {
+        return <Navigate to="/login" />
+    }
 
     return (
         <>
