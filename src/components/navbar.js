@@ -44,7 +44,7 @@ export default function Navbar() {
                         </div>
 
                         <div className="nav-item">
-                            <Link to={"/"}>Ask a Question</Link>
+                            <Link to={"/askquestion"}>Ask a Question</Link>
                         </div>
                        
                         <div className="nav-item login">

@@ -8,6 +8,7 @@ import Login from './login';
 import Questions from './questions';
 import ViewQuestion from './viewQuestion';
 import useLocalStorageState from 'use-local-storage-state';
+import AskQuestion from './askQuestion';
 
 function App() {
   const [token, setToken] = useLocalStorageState('libraryToken', null)
@@ -26,7 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/" element="" />
-        <Route path="/" element="" />
+        <Route path="/askquestion" element={<AskQuestion />} />
         <Route path="/login" element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />} />
         <Route path="/questions" element={<Questions token={token} />} />
         <Route path="/question/:questionId" element={<ViewQuestion token={token} />} />
