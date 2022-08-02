@@ -9,22 +9,23 @@ export const Login = ({ setAuth, isLoggedIn }) => {
   const [error, setError] = useState(null)
 
 
+  if (isLoggedIn) {
+    return <Navigate to="/" />
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     setError(null)
     axios
-      .post('https://red-panda-question-box.herokuapp.com/api/auth/token/login', {
+      .post('https://red-panda-question-box.herokuapp.com/api/auth/token/login/', {
         username: username,
         password: password,
       })
       .then((res) => {
         const token = res.data.auth_token
         setAuth(username, token)
+        console.log(setAuth)
       })
-  }
-  if (isLoggedIn) {
-    return <Navigate to="/" />
   }
 
   return (
