@@ -27,6 +27,8 @@ h3 {
   font-size: 1.5em;
   font-family: sans-serif;
   margin-bottom: 0;
+  margin-top: 0;
+  text-align: left;
 }
 
 p {
@@ -57,7 +59,22 @@ body {
   background-color: white;
   border-radius: 20px;
   padding: 1em;
-  margin: 1em;
+  margin: auto;
+  max-width: 600px;
+}
+
+.answerBox {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  padding: 1em;
+  margin: auto;
+  margin-top: 1em;
+  max-width: 100%;
+}
+
+.answerBox p {
+  color: white;
 }
 /* Navbar */
 

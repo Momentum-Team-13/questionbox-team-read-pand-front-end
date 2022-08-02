@@ -36,26 +36,36 @@ export default function Navbar() {
                 <div className="nav-content">
                     <div className="nav-items">
                     
-                        <div className="nav-item">
-                            <Link to={"/"}>Home</Link>
-                        </div>
-                        <div className="nav-item">
-                            <Link to={"/"}>User Profile</Link>
-                        </div>
+                          <Link to={"/"}><div className="nav-item">
+                          Home
+                        </div></Link>
+                         <Link to={"/"}><div className="nav-item">
+                           User Profile
+                        </div></Link>
 
+                        <Link to={"/"}> <div className="nav-item">
+                           Ask a Question
+                        </div></Link>
+
+                        <Link to={"/questions"}>
                         <div className="nav-item">
-                            <Link to={"/"}>Ask a Question</Link>
+                           Questions (Temp)
                         </div>
-                       
+                        </Link>
+                        <Link to={"/viewquestion"}>
+                        <div className="nav-item">
+                            View Question
+                        </div></Link>
+                        {!isLoggedIn && <Link to={"/login"}>
                         <div className="nav-item login">
-                        <Link to={"/login"}>{isLoggedIn && <div onClick={() => {handleLogout()}}>Logout</div>} {!isLoggedIn && "Login"}</Link>
+                        Login
                         </div>
-                        <div className="nav-item">
-                            <Link to={"/questions"}>Questions (Temp)</Link>
+                        </Link>}
+                        {isLoggedIn && 
+                        <div className="nav-item login" onClick={() => {handleLogout()}}>
+                        Logout
                         </div>
-                        <div className="nav-item">
-                            <Link to={"/viewquestion"}>View Question</Link>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
