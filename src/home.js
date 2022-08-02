@@ -1,9 +1,13 @@
-import dummy from './dummy-data.json'
+import dummy from './dummy-data.json';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
+
+    const navigate = useNavigate()
+
     return (
         <div className="App">
-            <button className="askButton">Ask a Question</button>
+            <button className="askButton" onClick={() => navigate("/askquestion")}>Ask a Question</button>
             <div className="wrap">
                 <h1>Choose Your Category!</h1>
                 <div className="genreList">
