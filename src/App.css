@@ -234,6 +234,20 @@ body {
 }
 
 
+/* Ask Question Form */
+#ask-question-form {
+  background-image: linear-gradient(blue 20%, #00D9FF 80%);
+  border: solid;
+  padding: 1em;
+  border-radius: 20px;
+  border-color: white;
+  max-width: 350px;
+  margin: 1em auto;
+}
+
+
+
+
 /* Mobile Sizing */
 
 @media screen and (max-width: 560px) {
