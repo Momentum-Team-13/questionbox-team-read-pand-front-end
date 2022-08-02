@@ -1,13 +1,15 @@
 import axios from 'axios'
 import { Link } from "react-router-dom";
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
+
 
 export const NewUser = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState(null)
+  const navigateTo = useNavigate()
 
 
   const handleSubmit = (event) => {
@@ -20,7 +22,7 @@ export const NewUser = () => {
         password: password,
       })
       .then(() => {
-        <Navigate to="/" />
+        navigateTo('/login')
       })
   }
 
