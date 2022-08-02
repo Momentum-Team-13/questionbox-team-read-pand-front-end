@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import { Link } from "react-router-dom";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
 
@@ -16,6 +16,22 @@ export default function AskQuestion({ token, isLoggedIn }) {
         setQuestionTitle('')
         setQuestionText('')
     }
+
+
+     
+    useEffect(() => {
+        axios
+            .get(`https://red-panda-question-box.herokuapp.com/api/questions/8`,
+                {
+                    headers: {
+                        Authorization: `Token ${token}`,
+                    },
+                })
+            .then((res) => {
+                console.log(res.data)
+            })
+    })
+
 
     const handleAskQuestion = (event) => {
         event.preventDefault()
