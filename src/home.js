@@ -11,11 +11,7 @@ export default function Home({token}) {
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/categories/`,
-           { headers: {
-                Authorization: `Token ${token}`,
-              },
-    })        
+            .get(`https://red-panda-question-box.herokuapp.com/api/categories/`)        
             .then((res) => {
                 console.log(res.data);
                 setCategory(res.data);

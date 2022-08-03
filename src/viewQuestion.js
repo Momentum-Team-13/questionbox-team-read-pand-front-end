@@ -10,12 +10,7 @@ export default function ViewQuestions({ token }) {
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}`,
-                {
-                    headers: {
-                        Authorization: `Token ${token}`,
-                    },
-                })
+            .get(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}`)
             .then((res) => {
                 console.log(res);
                 setQuestions(res.data);
@@ -25,12 +20,7 @@ export default function ViewQuestions({ token }) {
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`,
-                {
-                    headers: {
-                        Authorization: `Token ${token}`,
-                    },
-                })
+            .get(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`)
             .then((res) => {
                 console.log(res);
                 setAnswers(res.data);
@@ -52,12 +42,7 @@ export default function ViewQuestions({ token }) {
                 {
                     description: questionDescription,
                     favorited_by: []
-                },
-                {
-                    headers: {
-                        Authorization: `Token ${token}`,
-                    },
-                })
+                },)
             .then((res) => {
                 console.log(res)
                 window.location.reload(true)
@@ -67,13 +52,12 @@ export default function ViewQuestions({ token }) {
             })
     }
 
+
     return (
         <>
             <div className="App">
-            
                 <div className="wrap">
-               
-                    <h1>{question.title}</h1> 
+                    <h1>{question.title}</h1>
                     <div className='textBox'> <h3>{question.user} asked:</h3>
                         <p>{question.description}</p>
                     </div>
@@ -81,7 +65,8 @@ export default function ViewQuestions({ token }) {
                         <p>{answer.description}</p>
                     </div>))}
 
-                    {error && <div className="error">{error}</div>}
+                    {/* {error && <div className="error">{error}</div>} */}
+                    {token && 
                     <form id="answer-question-form" onSubmit={handleAnswerQuestion}>
 
                         <div className="controls-3">
@@ -99,7 +84,7 @@ export default function ViewQuestions({ token }) {
                         <div className="form-submit">
                             <input type="submit" value="Post Answer" className="button" />
                         </div>
-                    </form>
+                    </form>}
 
                 </div>
             </div>

@@ -30,9 +30,9 @@ export const NewUser = () => {
     <>  <div className="wrap">
      <h2>Create an Account</h2>
      {error && <div className="error">{error}</div>}
-     <form id="login-form" onSubmit={handleSubmit}>
+     <form id="new-user-form" onSubmit={handleSubmit}>
      <div className="controls">
-       <label htmlFor="email-field">email:<br/></label>
+       <label htmlFor="email-field">email: </label>
        <input
             id="email-field"
             onChange={(e) => setEmail(e.target.value)}

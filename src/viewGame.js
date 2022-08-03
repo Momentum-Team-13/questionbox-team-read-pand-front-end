@@ -9,11 +9,7 @@ export default function ViewQuestions({ token }) {
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/game/${gameId}/question/`,
-            { headers: {
-                Authorization: `Token ${token}`,
-              },
-    })
+            .get(`https://red-panda-question-box.herokuapp.com/api/game/${gameId}/question/`)
             .then((res) => {
                 console.log(res);
                 setGame(res.data);

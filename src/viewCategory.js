@@ -9,11 +9,7 @@ export default function ViewQuestions({ token }) {
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/category/${categoryId}/game`,
-            { headers: {
-                Authorization: `Token ${token}`,
-              },
-    })
+            .get(`https://red-panda-question-box.herokuapp.com/api/category/${categoryId}/game`)
             .then((res) => {
                 console.log(res);
                 setCategory(res.data);
