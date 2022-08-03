@@ -11,7 +11,9 @@ export default function AskQuestion({ token }) {
 
     const [error, setError] = useState(null)
 
-    const [gameTitles, setGameTitles] = useState([]);
+    const [gameTitles, setGameTitles] = useState([])
+
+    const [dropItem, setDropItem] = useState('1')
 
     // const {gamesId} = useParams()
 
@@ -19,6 +21,7 @@ export default function AskQuestion({ token }) {
     const resetForm = () => {
         setQuestionTitle('')
         setQuestionText('')
+        // setDropItem('1')
     }
 
 
@@ -57,7 +60,7 @@ export default function AskQuestion({ token }) {
         setError(null)
 
         axios
-            .post(`https://red-panda-question-box.herokuapp.com/api/game/${1}/question/`,
+            .post(`https://red-panda-question-box.herokuapp.com/api/game/${dropItem}/question/`,
                 {
                     title: questionTitle,
                     description: questionText,
@@ -105,9 +108,15 @@ export default function AskQuestion({ token }) {
 
                     <div className="controls-2">
                         <label htmlFor='game-title-field'>Game Title: </label>
-                        <select id='game-title-field'>
+                        <select
+                            id='game-title-field'
+                            // value={dropItem}
+                            onChange={(e) => setDropItem(e.target.value)}
+                        >
                             {gameTitles.map((gamez, index) => (
-                                <option key={index} value={gamez.game}>{gamez.game}</option>
+                                <option key={index} value={index + 1}>
+                                    {gamez.game}
+                                </option>
                             ))}
                         </select>
                     </div>
@@ -128,6 +137,7 @@ export default function AskQuestion({ token }) {
                     <div className="form-submit">
                         <input type="submit" value="Post Question" className="button" />
                     </div>
+                    <p className="controls-2">{dropItem}</p>
                 </form>
             </div>
         </>
