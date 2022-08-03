@@ -38,11 +38,16 @@ export default function ViewQuestions({ token }) {
         setError(null)
 
         axios
-            .post(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`,
-                {
-                    description: questionDescription,
-                    favorited_by: []
-                },)
+        .post(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`,
+        {
+            description: questionDescription,
+            favorited_by: []
+        },
+        {
+            headers: {
+                Authorization: `Token ${token}`,
+            },
+        })
             .then((res) => {
                 console.log(res)
                 window.location.reload(true)
