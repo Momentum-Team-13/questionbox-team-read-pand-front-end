@@ -32,7 +32,7 @@ export const NewUser = () => {
      {error && <div className="error">{error}</div>}
      <form id="new-user-form" onSubmit={handleSubmit}>
      <div className="controls">
-       <label htmlFor="email-field">email: </label>
+       <label htmlFor="email-field" className="userLabel">email:&nbsp;</label>
        <input
             id="email-field"
             onChange={(e) => setEmail(e.target.value)}
@@ -40,7 +40,7 @@ export const NewUser = () => {
           />
        </div>
        <div className="controls">
-       <label htmlFor="username-field">username: </label>
+       <label htmlFor="username-field" className="userLabel">username:&nbsp;&nbsp;</label>
        <input
             id="username-field"
             onChange={(e) => setUsername(e.target.value)}
@@ -48,7 +48,7 @@ export const NewUser = () => {
           />
        </div>
        <div className="controls">
-       <label htmlFor="password-field">password: </label>
+       <label htmlFor="password-field" className="userLabel">password:&nbsp;</label>
           <input
             id="password-field"
             onChange={(e) => setPassword(e.target.value)}

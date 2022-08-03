@@ -343,13 +343,20 @@ body {
   margin: 1em auto;
 }
 
-#email-field {
-  text-align: right;
+.userLabel {
+  width: 150px;
+  display: inline-block;
+  text-align: left;
 }
+
 /* Mobile Sizing */
 
 @media screen and (max-width: 560px) {
   .nav-items {
     width: 200px;
+    height: 160px;
+  }
+  .nav-item {
+    margin: 0 auto;
   }
 }
