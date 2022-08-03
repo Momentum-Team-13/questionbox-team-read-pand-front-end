@@ -40,7 +40,7 @@ export const NewUser = () => {
           />
        </div>
        <div className="controls">
-       <label htmlFor="username-field" className="userLabel">username:&nbsp;&nbsp;</label>
+       <label htmlFor="username-field" className="userLabel">username:&nbsp;</label>
        <input
             id="username-field"
             onChange={(e) => setUsername(e.target.value)}
