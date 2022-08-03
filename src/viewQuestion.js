@@ -71,7 +71,7 @@ export default function ViewQuestions({ token }) {
     return (
         <>
             <div className="App">
-            {question.length > 0 && answer.length > 0 && 
+            {question.length > 0 && 
                 <div className="wrap">
                
                     <h1>{question.title}</h1> 
