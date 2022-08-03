@@ -71,8 +71,10 @@ export default function ViewQuestions({ token }) {
     return (
         <>
             <div className="App">
+            {question.length > 0 && answer.length > 0 && 
                 <div className="wrap">
-                    <h1>{question.title}</h1>
+               
+                    <h1>{question.title}</h1> 
                     <div className='textBox'> <h3>{question.user} asked:</h3>
                         <p>{question.description}</p>
                     </div>
@@ -100,7 +102,7 @@ export default function ViewQuestions({ token }) {
                         </div>
                     </form>
 
-                </div>
+                </div>}
             </div>
         </>
     )
