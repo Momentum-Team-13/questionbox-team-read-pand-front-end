@@ -1,9 +1,8 @@
-import dummy from './dummy-data.json'
 import React, { useEffect, useState} from 'react';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
-export default function Home({token}) {
+export default function Home({token, isLoggedIn}) {
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
@@ -18,9 +17,10 @@ export default function Home({token}) {
                 setCategory(res.data);
             });
     }, [token]);
-    return (
 
-    
+
+
+    return (
         <div className="App">
             <button className="askButton">Ask a Question</button>
             <div className="wrap">

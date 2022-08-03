@@ -23,6 +23,11 @@ export default function ViewQuestions({ token }) {
 
     return (
         <div className="App">
+                {game.length === 0 &&
+        <div className="wrap">
+            <h1>Nothing Here!</h1>
+        </div>
+        }
        {game.length > 0 && 
             <div className="wrap">
                 <h1>{game[0].game}</h1>

@@ -150,7 +150,6 @@ body {
   color: black;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
   border-radius: 20px;
   border: solid;
 }
@@ -178,7 +177,9 @@ body {
 .genreList {
   display: flex;
   flex-wrap: wrap;
-
+  justify-content: center;
+  max-width: 800px;
+  margin: auto;
 }
 /* Login Page */
 
@@ -250,7 +251,41 @@ body {
   color: white;
 }
 
+/* User Profile  */
 
+.userQuestion {
+  background-color: white;
+  max-width: 400px;
+  margin: 1em;
+  padding: .5em 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+  border-radius: 20px;
+}
+.userQuestion:hover {
+  background-color: black;
+  color: white;
+}
+
+.userAnswer {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.userLink {
+  max-width: 400px;
+  display: block;
+}
+
+.userProfile {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+}
 /* Mobile Sizing */
 
 @media screen and (max-width: 560px) {

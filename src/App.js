@@ -10,7 +10,10 @@ import Questions from './questions';
 import ViewQuestion from './viewQuestion';
 import ViewCategory from './viewCategory';
 import ViewGame from './viewGame';
+import ViewUser from './viewUser';
 import useLocalStorageState from 'use-local-storage-state';
+import axios from 'axios'
+import React, { useEffect, useState } from 'react';
 
 function App() {
   const [token, setToken] = useLocalStorageState('libraryToken', null)
@@ -20,6 +23,8 @@ function App() {
     setToken(token)
     setUsername(username)
   }
+
+
   const isLoggedIn = username && token
   
 
@@ -27,15 +32,16 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home token={token} />} />
+        <Route path="/" element={<Home token={token} isLoggedIn={isLoggedIn} />} />
         <Route path="/" element="" />
         <Route path="/" element="" />
         <Route path="/new-user" element={<NewUser/>} />
         <Route path="/login" element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />} />
-        <Route path="/questions" element={<Questions token={token} />} />
-        <Route path="/question/:questionId" element={<ViewQuestion token={token} />} />
-        <Route path="/category/:categoryId" element={<ViewCategory token={token} />} />
-        <Route path="/category/game/:gameId" element={<ViewGame token={token} />} />
+        <Route path="/questions" element={<Questions token={token} isLoggedIn={isLoggedIn} />} />
+        <Route path="/question/:questionId" element={<ViewQuestion token={token} isLoggedIn={isLoggedIn} />} />
+        <Route path="/category/:categoryId" element={<ViewCategory token={token} isLoggedIn={isLoggedIn} />} />
+        <Route path="/category/game/:gameId" element={<ViewGame token={token} isLoggedIn={isLoggedIn} />} />
+        <Route path="/:userId" element={<ViewUser token={token} isLoggedIn={isLoggedIn} />} />
       </Routes>
     </>
   );

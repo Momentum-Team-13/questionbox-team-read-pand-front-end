@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import useLocalStorageState from 'use-local-storage-state'
 import axios from 'axios'
 
 export default function Navbar() {
     const [token, setToken] = useLocalStorageState('libraryToken', null)
     const [username, setUsername] = useLocalStorageState('libraryUsername', '')
+    const [user, setUser] = useState([]);
 
     const setAuth = (username, token) => {
         setToken(token)
@@ -25,8 +27,22 @@ export default function Navbar() {
             setAuth('', null)
           )
       }
+
+      useEffect(() => {
+        axios
+            .get(`https://red-panda-question-box.herokuapp.com/api/auth/users`,
+            { headers: {
+                Authorization: `Token ${token}`,
+              },
+    })
+            .then((res) => {
+                setUser(res.data);
+                console.log(res.data)
+            });
+    }, [token]);
+
       const isLoggedIn = username && token
-      
+
     return (
         <>
             <div className="nav">
@@ -39,9 +55,10 @@ export default function Navbar() {
                           <Link to={"/"}><div className="nav-item">
                           Home
                         </div></Link>
-                         <Link to={"/"}><div className="nav-item">
+                        {user.length > 0 && 
+                         <Link to={`/${user[0].id}`}><div className="nav-item">
                            User Profile
-                        </div></Link>
+                        </div></Link>}
 
                         <Link to={"/"}> <div className="nav-item">
                            Ask a Question
