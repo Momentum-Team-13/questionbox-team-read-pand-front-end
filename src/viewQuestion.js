@@ -67,11 +67,11 @@ export default function ViewQuestions({ token }) {
             })
     }
 
-
+if (question.length > 0 && answer.length > 0) {
     return (
         <>
             <div className="App">
-            {question.length > 0 && 
+            
                 <div className="wrap">
                
                     <h1>{question.title}</h1> 
@@ -102,8 +102,8 @@ export default function ViewQuestions({ token }) {
                         </div>
                     </form>
 
-                </div>}
+                </div>
             </div>
         </>
-    )
+    )}
 }
