@@ -11,24 +11,45 @@ export default function AskQuestion({ token }) {
 
     const [error, setError] = useState(null)
 
+    const [gameTitles, setGameTitles] = useState([]);
+
+    // const {gamesId} = useParams()
+
+
     const resetForm = () => {
         setQuestionTitle('')
         setQuestionText('')
     }
 
 
+    // useEffect(() => {
+    //     axios
+    //         .get(`https://red-panda-question-box.herokuapp.com/api/questions/8`,
+    //             {
+    //                 headers: {
+    //                     Authorization: `Token ${token}`,
+    //                 },
+    //             })
+    //         .then((res) => {
+    //             console.log(res.data)
+    //         })
+    // })
+
+
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/questions/8`,
+            .get(`https://red-panda-question-box.herokuapp.com/api/category/${1}/game/`,
                 {
                     headers: {
                         Authorization: `Token ${token}`,
                     },
                 })
             .then((res) => {
-                console.log(res.data)
+                console.log(res);
+                console.log(res.data);
+                setGameTitles(res.data);
             })
-    })
+    }, [token]);
 
 
     const handleAskQuestion = (event) => {
@@ -36,11 +57,11 @@ export default function AskQuestion({ token }) {
         setError(null)
 
         axios
-            .post(`https://red-panda-question-box.herokuapp.com/api/questions/`,
+            .post(`https://red-panda-question-box.herokuapp.com/api/game/${1}/question/`,
                 {
                     title: questionTitle,
-                    description: questionText
-
+                    description: questionText,
+                    favorited_by: []
                 },
                 {
                     headers: {
@@ -56,12 +77,16 @@ export default function AskQuestion({ token }) {
             })
     }
 
+    // `https://red-panda-question-box.herokuapp.com/api/game/${1}/question/`
+
+    // `https://red-panda-question-box.herokuapp.com/api/questions/`
+
 
     if (!token) {
         return <Navigate to="/login" />
     }
 
-    
+
     return (
         <>
             <div className="wrap">
@@ -77,21 +102,19 @@ export default function AskQuestion({ token }) {
                             onChange={(e) => setQuestionTitle(e.target.value)}
                         />
                     </div>
+
                     <div className="controls-2">
                         <label htmlFor='game-title-field'>Game Title: </label>
                         <select id='game-title-field'>
-                            <option value="">Arena Fighters</option>
-                            <option value="">Fighters</option>
-                            <option value="">First-Person Shooter</option>
-                            <option value="">Horror</option>
-                            <option value="">Puzzle Game</option>
-                            <option value="">Role Playing Game</option>
-                            <option value="">Visual Novels</option>
+                            {gameTitles.map((gamez, index) => (
+                                <option key={index} value={gamez.game}>{gamez.game}</option>
+                            ))}
                         </select>
                     </div>
+
                     <div className="controls-2">
                         <div className="question-label">
-                        <label htmlFor='question-text-field'>Question Text: </label>
+                            <label htmlFor='question-text-field'>Question Text: </label>
                         </div>
                         <textarea
                             id='question-text-field'
@@ -101,6 +124,7 @@ export default function AskQuestion({ token }) {
                             onChange={(e) => setQuestionText(e.target.value)}
                         />
                     </div>
+
                     <div className="form-submit">
                         <input type="submit" value="Post Question" className="button" />
                     </div>
