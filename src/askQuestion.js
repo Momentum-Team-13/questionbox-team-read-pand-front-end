@@ -38,10 +38,11 @@ export default function AskQuestion({ token }) {
     //         })
     // })
 
+    // /category/${1}/game/
 
     useEffect(() => {
         axios
-            .get(`https://red-panda-question-box.herokuapp.com/api/category/${1}/game/`,
+            .get(`https://red-panda-question-box.herokuapp.com/api/games/`,
                 {
                     headers: {
                         Authorization: `Token ${token}`,
@@ -114,7 +115,7 @@ export default function AskQuestion({ token }) {
                             onChange={(e) => setDropItem(e.target.value)}
                         >
                             {gameTitles.map((gamez, index) => (
-                                <option key={index} value={index + 1}>
+                                <option key={index} value={gamez.id}>
                                     {gamez.game}
                                 </option>
                             ))}
