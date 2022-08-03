@@ -17,7 +17,6 @@ export default function AskQuestion({ token }) {
     }
 
 
-     
     useEffect(() => {
         axios
             .get(`https://red-panda-question-box.herokuapp.com/api/questions/8`,
@@ -57,17 +56,19 @@ export default function AskQuestion({ token }) {
             })
     }
 
+
     if (!token) {
         return <Navigate to="/login" />
     }
 
+    
     return (
         <>
             <div className="wrap">
                 <h2>Ask a Question</h2>
                 {error && <div className="error">{error}</div>}
                 <form id="ask-question-form" onSubmit={handleAskQuestion}>
-                    <div className="controls">
+                    <div className="controls-2">
                         <label htmlFor='question-title-field'>Question Title: </label>
                         <input
                             id='question-title-field'
@@ -76,7 +77,7 @@ export default function AskQuestion({ token }) {
                             onChange={(e) => setQuestionTitle(e.target.value)}
                         />
                     </div>
-                    <div className="controls">
+                    <div className="controls-2">
                         <label htmlFor='game-title-field'>Game Title: </label>
                         <select id='game-title-field'>
                             <option value="">Arena Fighters</option>
@@ -88,11 +89,14 @@ export default function AskQuestion({ token }) {
                             <option value="">Visual Novels</option>
                         </select>
                     </div>
-                    <div className="controls">
+                    <div className="controls-2">
+                        <div className="question-label">
                         <label htmlFor='question-text-field'>Question Text: </label>
+                        </div>
                         <textarea
                             id='question-text-field'
-                            rows="3"
+                            rows="4"
+                            cols="50"
                             value={questionText}
                             onChange={(e) => setQuestionText(e.target.value)}
                         />
