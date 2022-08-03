@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import useLocalStorageState from 'use-local-storage-state'
 import axios from 'axios'
@@ -7,6 +7,7 @@ export default function Navbar() {
     const [token, setToken] = useLocalStorageState('libraryToken', null)
     const [username, setUsername] = useLocalStorageState('libraryUsername', '')
     const [user, setUser] = useState([]);
+    const navigateTo = useNavigate()
 
     const setAuth = (username, token) => {
         setToken(token)
@@ -24,7 +25,10 @@ export default function Navbar() {
             }
           )
           .then(() =>
-            setAuth('', null)
+            setAuth('', null),
+          )
+          .then(() =>
+          window.location.reload(true)
           )
       }
 
