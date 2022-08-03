@@ -60,7 +60,7 @@ export default function ViewQuestions({ token }) {
                 })
             .then((res) => {
                 console.log(res)
-                window.location.reload()
+                window.location.reload(true)
             })
             .catch((error) => {
                 setError(error.message)
