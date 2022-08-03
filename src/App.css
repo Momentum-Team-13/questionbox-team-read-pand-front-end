@@ -359,4 +359,8 @@ body {
   .nav-item {
     margin: 0 auto;
   }
+  .askButton {
+    width: 100%;
+    padding: 0;
+  }
 }
