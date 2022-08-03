@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 export default function AskQuestion({ token }) {
@@ -15,6 +15,7 @@ export default function AskQuestion({ token }) {
 
     const [dropItem, setDropItem] = useState('1')
 
+    const Moveon = useNavigate()
     // const {gamesId} = useParams()
 
 
@@ -75,7 +76,9 @@ export default function AskQuestion({ token }) {
             .then((res) => {
                 console.log(res)
                 resetForm()
+                
             })
+            .then(Moveon('/'))
             .catch((error) => {
                 setError(error.message)
             })
@@ -138,7 +141,7 @@ export default function AskQuestion({ token }) {
                     <div className="form-submit">
                         <input type="submit" value="Post Question" className="button" />
                     </div>
-                    <p className="controls-2">{dropItem}</p>
+                    {/* <p className="controls-2">{dropItem}</p> */}
                 </form>
             </div>
         </>
