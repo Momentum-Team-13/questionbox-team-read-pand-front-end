@@ -41,7 +41,7 @@ export default function ViewQuestions({ token }) {
         .post(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`,
         {
             description: questionDescription,
-            favorited_by: []
+            favorited_by: [],
         },
         {
             headers: {
@@ -71,7 +71,7 @@ export default function ViewQuestions({ token }) {
                     </div>))}
 
                     {/* {error && <div className="error">{error}</div>} */}
-                    {token && 
+                    
                     <form id="answer-question-form" onSubmit={handleAnswerQuestion}>
 
                         <div className="controls-3">
@@ -89,7 +89,7 @@ export default function ViewQuestions({ token }) {
                         <div className="form-submit">
                             <input type="submit" value="Post Answer" className="button" />
                         </div>
-                    </form>}
+                    </form>
 
                 </div>
             </div>

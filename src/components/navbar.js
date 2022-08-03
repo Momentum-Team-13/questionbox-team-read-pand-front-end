@@ -24,7 +24,7 @@ export default function Navbar() {
         }
       )
       .then(() =>
-        setAuth('', null)
+        setAuth('', null),setToken(null),setUsername(null)
       )
       .then(() =>
       window.location.reload(true)
