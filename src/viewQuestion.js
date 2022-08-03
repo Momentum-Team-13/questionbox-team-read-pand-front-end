@@ -67,7 +67,6 @@ export default function ViewQuestions({ token }) {
             })
     }
 
-if (question.length > 0 && answer.length > 0) {
     return (
         <>
             <div className="App">
@@ -105,5 +104,5 @@ if (question.length > 0 && answer.length > 0) {
                 </div>
             </div>
         </>
-    )}
+    )
 }
