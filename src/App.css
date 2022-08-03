@@ -252,6 +252,51 @@ body {
 }
 
 /* User Profile  */
+/* Ask Question Form */
+#ask-question-form {
+  /* background-image: linear-gradient(blue 20%, #00D9FF 80%); */
+  background-color: black;
+  border: solid;
+  padding: 1em;
+  border-radius: 20px;
+  border-color: white;
+  max-width: 550px;
+  margin: 1em auto;
+}
+
+.controls-2 {
+  font-size: 1.5em;
+  color: white;
+  font-family: sans-serif;
+  margin: 8px;
+}
+
+.question-label {
+  margin: 8px;
+}
+
+/* Answer Question Form */
+#answer-question-form {
+  /* background-image: linear-gradient(black 40%, white 80%); */
+  background-color: black;
+  border: solid;
+  padding: 1em;
+  border-radius: 20px;
+  border-color: white;
+  max-width: 600px;
+  margin: 1em auto;
+}
+
+.controls-3 {
+  font-size: 1.5em;
+  color: white;
+  font-family: sans-serif;
+}
+
+.answer-label {
+  margin: 8px;
+}
+
 
 .userQuestion {
   background-color: white;

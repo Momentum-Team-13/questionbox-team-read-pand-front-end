@@ -1,8 +1,12 @@
 import React, { useEffect, useState} from 'react';
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function Home({token, isLoggedIn}) {
+
+export default function Home({token}) {
+
+    const navigate = useNavigate()
+
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
@@ -22,7 +26,7 @@ export default function Home({token, isLoggedIn}) {
 
     return (
         <div className="App">
-            <button className="askButton">Ask a Question</button>
+            <button className="askButton" onClick={() => navigate("/askquestion")}>Ask a Question</button>
             <div className="wrap">
                 <h1>Choose Your Category!</h1>
                 {category.length > 0 && 

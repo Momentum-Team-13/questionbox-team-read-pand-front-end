@@ -12,8 +12,7 @@ import ViewCategory from './viewCategory';
 import ViewGame from './viewGame';
 import ViewUser from './viewUser';
 import useLocalStorageState from 'use-local-storage-state';
-import axios from 'axios'
-import React, { useEffect, useState } from 'react';
+import AskQuestion from './askQuestion';
 
 function App() {
   const [token, setToken] = useLocalStorageState('libraryToken', null)
@@ -34,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home token={token} isLoggedIn={isLoggedIn} />} />
         <Route path="/" element="" />
-        <Route path="/" element="" />
+        <Route path="/askquestion" element={<AskQuestion token={token} />} />
         <Route path="/new-user" element={<NewUser/>} />
         <Route path="/login" element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />} />
         <Route path="/questions" element={<Questions token={token} isLoggedIn={isLoggedIn} />} />
