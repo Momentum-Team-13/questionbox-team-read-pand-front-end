@@ -7,6 +7,7 @@ export default function ViewQuestions({ token }) {
     const {userId} = useParams()
     const [question, setQuestions] = useState([]);
     const [answer, setAnswers] = useState([]);
+    const [favorite, setFavorites] = useState([]);
 
     useEffect(() => {
         axios
@@ -32,8 +33,22 @@ export default function ViewQuestions({ token }) {
             });
            
     }, [token, userId]);
-    if (answer.length > 0 ) {
-    console.log(answer.length)}
+
+    useEffect(() => {
+        axios
+            .get(`https://red-panda-question-box.herokuapp.com/api/user/favorite/questions`,
+            {
+                headers: {
+                    Authorization: `Token ${token}`,
+                },
+            }
+            )
+            .then((res) => {
+                setFavorites(res.data);
+            })
+    }, [token]);
+
+
     return (
         <div className="App">
        
@@ -49,7 +64,7 @@ export default function ViewQuestions({ token }) {
                 </div>))}</div>
             <div className="userBox">
             <h2>Answers</h2>
-            {answer.map (answer => ( <div className='answerBox'> <Link to={`/question/${answer.question.pk}`} className="userLink"> 
+            {answer.map (answer => ( <div className='answerBox'> <Link to={`/question/${answer.question_id}`} className="userLink"> 
             <div className="userAnswer">
             <h3>{answer.description}</h3>
             </div>
@@ -58,7 +73,13 @@ export default function ViewQuestions({ token }) {
       
             </div>
             <div className="faveBox">
-                <h2>Favorites</h2>
+                <h2>Favorite Questions</h2>
+                {favorite.map (favorite => ( <Link to={`/question/${favorite.pk}`} className="faveLink"><div className='favoriteBox'>  
+            <div className="userFavorite">
+            <h3>{favorite.title}</h3>
+            </div>
+            
+                </div></Link>))}
             </div>
             </div>
         </div>

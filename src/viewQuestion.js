@@ -7,12 +7,16 @@ export default function ViewQuestions({ token }) {
     const { questionId } = useParams()
     const [question, setQuestions] = useState([]);
     const [answer, setAnswers] = useState([]);
+    let faveFind = 0
+    const [favorite, setFavorite] = useState([]);
+    const [questionDescription, setQuestionDescription] = useState('')
+    const [error, setError] = useState(null)
+    const pk = parseFloat(questionId);
 
     useEffect(() => {
         axios
             .get(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}`)
             .then((res) => {
-                console.log(res);
                 setQuestions(res.data);
             });
     }, [token, questionId]);
@@ -22,16 +26,9 @@ export default function ViewQuestions({ token }) {
         axios
             .get(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`)
             .then((res) => {
-                console.log(res);
                 setAnswers(res.data);
             });
     }, [token, questionId]);
-
-
-
-    const [questionDescription, setQuestionDescription] = useState('')
-
-    const [error, setError] = useState(null)
 
     const handleAnswerQuestion = (event) => {
         event.preventDefault()
@@ -49,24 +46,82 @@ export default function ViewQuestions({ token }) {
             },
         })
             .then((res) => {
-                console.log(res)
                 window.location.reload(true)
             })
             .catch((error) => {
                 setError(error.message)
             })
     }
+    
+    useEffect(() => {
+        axios
+            .get(`https://red-panda-question-box.herokuapp.com/api/user/favorite/questions`,
+            {
+                headers: {
+                    Authorization: `Token ${token}`,
+                },
+            }
+            )
+            .then((res) => {
+                setFavorite(res.data);
+            })
+    }, [token]);
+
+    function faveMaker() {
+        axios
+        .post(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}/favorites/`,
+        {
+            favorited_by: [],
+        },
+        {
+            headers: {
+                Authorization: `Token ${token}`,
+            },
+        })
+        .then(() => {
+            window.location.reload(true)
+        })
+            .catch((error) => {
+                setError(error.message)
+            })
+    }
+
+    function faveTaker() {
+  
+        axios
+        .delete(`https://red-panda-question-box.herokuapp.com/api/questions/${questionId}/favorites/`,
+        {
+            headers: {
+                Authorization: `Token ${token}`,
+            },
+        })
+        .then(() => {
+            window.location.reload(true)
+        })
+            .catch((error) => {
+                setError(error.message)
+            })
+    }
+
+    if (favorite.length > 0) {
+       faveFind = (favorite.find((fav) => fav.pk === pk))
+    }
 
 
     return (
+        
         <>
             <div className="App">
                 <div className="wrap">
-                    <h1>{question.title}</h1>
+                    <h1>{question.title}</h1> 
                     <div className='textBox'> <h3>{question.user} asked:</h3>
                         <p>{question.description}</p>
+                        {faveFind && 
+                        <button className="faveOn" onClick={() => faveTaker()} ><img src="../images/star-off.png" alt="fave-icon"/></button>}
+                        {!faveFind && 
+                        <button className="faveOff" onClick={() => faveMaker()} ><img src="../images/star-off.png" alt="fave-icon"/></button>}
                     </div>
-                    {answer.map(answer => (<div className='answerBox'> <h3>{answer.user} answered:</h3>
+                    {answer.map(answer => (<div className='answer'> <h3>{answer.user} answered:</h3>
                         <p>{answer.description}</p>
                     </div>))}
 
