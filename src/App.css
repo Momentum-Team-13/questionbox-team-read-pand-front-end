@@ -251,7 +251,6 @@ body {
   color: white;
 }
 
-/* User Profile  */
 /* Ask Question Form */
 #ask-question-form {
   /* background-image: linear-gradient(blue 20%, #00D9FF 80%); */
@@ -348,6 +347,32 @@ body {
   display: inline-block;
   text-align: left;
 }
+
+/* Selected Answer */
+.selectedAnswerBox {
+  background-color: black;
+  color: white;
+  border: solid;
+  border-radius: 20px;
+  border-color: gold;
+  padding: 1em;
+  margin: auto;
+  margin-top: 1em;
+  max-width: 100%;
+}
+
+.selectedAnswerBox p {
+  color: gold;
+}
+
+.selectedAnswerBox h3 {
+  color: gold;
+}
+
+.selectedAnswerBox:hover {
+  cursor: pointer;
+}
+
 
 /* Mobile Sizing */
 
