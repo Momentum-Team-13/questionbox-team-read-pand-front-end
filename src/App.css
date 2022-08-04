@@ -476,6 +476,11 @@ body {
 /* Mobile Sizing */
 
 @media screen and (max-width: 560px) {
+  h1 {
+    line-height: .9em;
+    padding: .2em 0;
+    font-size: 4em;
+  }
   .nav-items {
     width: 200px;
     display: grid;
