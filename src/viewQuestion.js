@@ -8,7 +8,7 @@ export default function ViewQuestions({ token }) {
   const { questionId } = useParams();
   const [question, setQuestions] = useState(null);
   const [faveQuestion, setFaveQuestion] = useState("black");
-  const [faveAnswer, setFaveAnswer] = useState("black");
+  const [favorite, setFavorite] = useState(null);
   const [username, setUsername] = useLocalStorageState("libraryUsername", "");
   const [answer, setAnswers] = useState([]);
   const [questionDescription, setQuestionDescription] = useState("");
@@ -27,7 +27,7 @@ export default function ViewQuestions({ token }) {
       .then((res) => {
         setQuestions(res.data);
       });
-  }, [token, questionId]);
+  }, [token, questionId, favorite]);
 
   useEffect(() => {
     axios
@@ -38,6 +38,7 @@ export default function ViewQuestions({ token }) {
         setAnswers(res.data);
       });
   }, [token, questionId]);
+  
 
   const handleAnswerQuestion = (event) => {
     event.preventDefault();
@@ -74,6 +75,7 @@ export default function ViewQuestions({ token }) {
         )
         .then(() => {
           setFaveQuestion("black");
+          setFavorite(null)
         });
     }
     if (!question.favorited_by.includes(username)) {
@@ -91,6 +93,7 @@ export default function ViewQuestions({ token }) {
         )
         .then(() => {
           setFaveQuestion("gold");
+          setFavorite(question.favorited_by)
         });
     }
   }
