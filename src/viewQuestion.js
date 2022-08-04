@@ -88,8 +88,8 @@ export default function ViewQuestions({ token }) {
                             <div key={index} className={selectStyle} >
                                 <h3>{answer.user} answered:</h3>
                                 <p>{answer.description}</p>
-                                {/* <button onClick={() => setSelectStyle('selectedAnswerBox')}>Select Answer</button> */}
-                                <button onClick={() => setLikeCount(likeCount + 1)}>👍 Likes {likeCount}</button>
+                                <button onClick={() => setSelectStyle('selectedAnswerBox')}>Select Answer</button>
+                                {/* <button onClick={() => setLikeCount(likeCount + 1)}>👍 Likes {likeCount}</button> */}
                             </div>
                         ))}
                     </div>
