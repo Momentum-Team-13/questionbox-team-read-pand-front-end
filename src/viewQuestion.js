@@ -38,16 +38,16 @@ export default function ViewQuestions({ token }) {
         setError(null)
 
         axios
-        .post(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`,
-        {
-            description: questionDescription,
-            favorited_by: [],
-        },
-        {
-            headers: {
-                Authorization: `Token ${token}`,
-            },
-        })
+            .post(`https://red-panda-question-box.herokuapp.com/api/question/${questionId}/answer/`,
+                {
+                    description: questionDescription,
+                    favorited_by: [],
+                },
+                {
+                    headers: {
+                        Authorization: `Token ${token}`,
+                    },
+                })
             .then((res) => {
                 console.log(res)
                 window.location.reload(true)
@@ -58,6 +58,22 @@ export default function ViewQuestions({ token }) {
     }
 
 
+    const [selectStyle, setSelectStyle] = useState('answerBox');
+
+    // let handleSelectAnswer = () => {
+    //     setSelectStyle('selectedAnswerBox')
+    // };
+
+    // onClick={() => setSelectStyle('selectedAnswerBox')}
+
+    const [likeCount, setLikeCount] = useState(0);
+
+    // let handleLikes = () => {
+    //     setLikeCount(likeCount + 1)
+    // };
+
+    
+
     return (
         <>
             <div className="App">
@@ -66,31 +82,41 @@ export default function ViewQuestions({ token }) {
                     <div className='textBox'> <h3>{question.user} asked:</h3>
                         <p>{question.description}</p>
                     </div>
-                    {answer.map(answer => (<div className='answerBox'> <h3>{answer.user} answered:</h3>
-                        <p>{answer.description}</p>
-                    </div>))}
+
+                    <div>
+                        {answer.map((answer, index) => (
+                            <div key={index} className={selectStyle} >
+                                <h3>{answer.user} answered:</h3>
+                                <p>{answer.description}</p>
+                                <button onClick={() => setSelectStyle('selectedAnswerBox')}>Select Answer</button>
+                                {/* <button onClick={() => setLikeCount(likeCount + 1)}>👍 Likes {likeCount}</button> */}
+                            </div>
+                        ))}
+                    </div>
+
 
                     {/* {error && <div className="error">{error}</div>} */}
-                    
-                    <form id="answer-question-form" onSubmit={handleAnswerQuestion}>
 
-                        <div className="controls-3">
-                            <div className="answer-label">
-                                <label htmlFor='answer-text-field'>Post an Answer </label>
+                    {token &&
+                        <form id="answer-question-form" onSubmit={handleAnswerQuestion}>
+
+                            <div className="controls-3">
+                                <div className="answer-label">
+                                    <label htmlFor='answer-text-field'>Post an Answer </label>
+                                </div>
+                                <textarea
+                                    id='answer-text-field'
+                                    rows="4"
+                                    cols="50"
+                                    value={questionDescription}
+                                    onChange={(e) => setQuestionDescription(e.target.value)}
+                                />
                             </div>
-                            <textarea
-                                id='answer-text-field'
-                                rows="4"
-                                cols="50"
-                                value={questionDescription}
-                                onChange={(e) => setQuestionDescription(e.target.value)}
-                            />
-                        </div>
-                        <div className="form-submit">
-                            <input type="submit" value="Post Answer" className="button" />
-                        </div>
-                    </form>
-
+                            <div className="form-submit">
+                                <input type="submit" value="Post Answer" className="button" />
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
         </>
