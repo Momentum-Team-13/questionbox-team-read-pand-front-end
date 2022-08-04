@@ -8,6 +8,7 @@ export default function ViewQuestions({ token }) {
     const [question, setQuestions] = useState([]);
     const [answer, setAnswers] = useState([]);
     let faveFind = 0
+    let fave = "faveOff"
     const [favorite, setFavorite] = useState([]);
     const [questionDescription, setQuestionDescription] = useState('')
     const [error, setError] = useState(null)
