@@ -10,7 +10,8 @@ export default function ViewQuestions({ token }) {
   const [faveQuestion, setFaveQuestion] = useState("black");
   const [favorite, setFavorite] = useState(null);
   const [username, setUsername] = useLocalStorageState("libraryUsername", "");
-  const [answer, setAnswers] = useState([]);
+  const [answer, setAnswers] = useState(null);
+  const [handleAnswer, setHandleAnswer] = useState(answer)
   const [questionDescription, setQuestionDescription] = useState("");
   const [error, setError] = useState(null);
   const navigateTo = useNavigate();
@@ -37,7 +38,7 @@ export default function ViewQuestions({ token }) {
       .then((res) => {
         setAnswers(res.data);
       });
-  }, [token, questionId]);
+  }, [token, questionId, handleAnswer]);
   
 
   const handleAnswerQuestion = (event) => {
@@ -57,7 +58,7 @@ export default function ViewQuestions({ token }) {
         }
       )
       .then((res) => {
-        setAnswers([res.data])
+        setHandleAnswer(answer)
         emptyForm()
       })
   };
@@ -129,11 +130,12 @@ export default function ViewQuestions({ token }) {
         }
       )
       .then(() => {
-        setAnswers([])
+        setHandleAnswer(null);
       })
       .catch((error) => {
         setError(error.message);
       });
+      
   };
 
   useEffect(() => {
@@ -178,6 +180,8 @@ export default function ViewQuestions({ token }) {
               </div>
             </>
           )}
+          {answer && 
+          <>
           {answer.map((answer) => (
             <div className="answer">
               {" "}
@@ -192,7 +196,7 @@ export default function ViewQuestions({ token }) {
                 )}
               </div>
             </div>
-          ))}
+          ))}</>}
 
           {token && (
             <form id="answer-question-form" onSubmit={handleAnswerQuestion}>
