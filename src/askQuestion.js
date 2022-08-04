@@ -15,9 +15,9 @@ export default function AskQuestion({ token }) {
 
     const [dropItem, setDropItem] = useState('1')
 
-    const Moveon = useNavigate()
-    // const {gamesId} = useParams()
+    const [linkPK, setLinkPK] = useState(null)
 
+    const navigateTo = useNavigate()
 
     const resetForm = () => {
         setQuestionTitle('')
@@ -25,21 +25,6 @@ export default function AskQuestion({ token }) {
         // setDropItem('1')
     }
 
-
-    // useEffect(() => {
-    //     axios
-    //         .get(`https://red-panda-question-box.herokuapp.com/api/questions/8`,
-    //             {
-    //                 headers: {
-    //                     Authorization: `Token ${token}`,
-    //                 },
-    //             })
-    //         .then((res) => {
-    //             console.log(res.data)
-    //         })
-    // })
-
-    // /category/${1}/game/
 
     useEffect(() => {
         axios
@@ -50,12 +35,34 @@ export default function AskQuestion({ token }) {
                     },
                 })
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 console.log(res.data);
                 setGameTitles(res.data);
             })
     }, [token]);
 
+
+
+    useEffect(() => {
+        axios
+            .get(`https://red-panda-question-box.herokuapp.com/api/questions/`,
+                {
+                    headers: {
+                        Authorization: `Token ${token}`,
+                    },
+                })
+            .then((res) => {
+                console.log(res.data);
+                const updatedLength = res.data.length - 1;
+                console.log(updatedLength);
+                const currentPK = res.data[updatedLength].pk;
+                console.log(currentPK);
+                setLinkPK(currentPK+1)
+            })
+    }, [token]);
+
+    // console.log(linkPK)
+    
 
     const handleAskQuestion = (event) => {
         event.preventDefault()
@@ -74,11 +81,11 @@ export default function AskQuestion({ token }) {
                     },
                 })
             .then((res) => {
-                console.log(res)
-                resetForm()
-                
+                console.log(res);
+                resetForm();
+                navigateTo(`/question/${linkPK}`)
             })
-            .then(Moveon('/'))
+            // .then(Moveon('/'))
             .catch((error) => {
                 setError(error.message)
             })
@@ -86,7 +93,7 @@ export default function AskQuestion({ token }) {
 
     // `https://red-panda-question-box.herokuapp.com/api/game/${1}/question/`
 
-    // `https://red-panda-question-box.herokuapp.com/api/questions/`
+    // `https://red-panda-question-box.herokuapp.com/api/questions/${linkPK}`
 
 
     if (!token) {
@@ -107,6 +114,7 @@ export default function AskQuestion({ token }) {
                             type="text"
                             value={questionTitle}
                             onChange={(e) => setQuestionTitle(e.target.value)}
+                            required
                         />
                     </div>
 
@@ -135,6 +143,7 @@ export default function AskQuestion({ token }) {
                             cols="50"
                             value={questionText}
                             onChange={(e) => setQuestionText(e.target.value)}
+                            required
                         />
                     </div>
 
