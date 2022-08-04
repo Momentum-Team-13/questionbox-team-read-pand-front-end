@@ -478,13 +478,48 @@ body {
 @media screen and (max-width: 560px) {
   .nav-items {
     width: 200px;
-    height: 160px;
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    text-align: center;
+    justify-content: center;
+  }
+  .nav-items a {
+    display: flex;
+    justify-content: center;
   }
   .nav-item {
-    margin: 0 auto;
+    width: 200px;
+  }
+  .nav-item-login {
+    width: 200px;
   }
   .askButton {
     width: 100%;
     padding: 0;
+  }
+  .nav-logo img{
+    width: 100%;
+  }
+  #question-text-field {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  #answer-text-field {
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .controls-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  #answer-question-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
