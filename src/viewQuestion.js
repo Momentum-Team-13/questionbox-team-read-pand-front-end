@@ -37,7 +37,7 @@ export default function ViewQuestions({ token }) {
       .then((res) => {
         setAnswers(res.data);
       });
-  }, [token, questionId, answer]);
+  }, [token, questionId]);
 
   const handleAnswerQuestion = (event) => {
     event.preventDefault();
@@ -180,8 +180,6 @@ export default function ViewQuestions({ token }) {
               {" "}
               <h3>{answer.user} answered:</h3>
               <p>{answer.description}</p>
-              <div className="options">
-              </div>
               <div className="options">
                 {username === answer.user && (
                     <button className="deleteMe">

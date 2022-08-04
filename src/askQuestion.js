@@ -60,8 +60,6 @@ export default function AskQuestion({ token }) {
                 setLinkPK(currentPK+1)
             })
     }, [token]);
-
-    // console.log(linkPK)
     
 
     const handleAskQuestion = (event) => {
