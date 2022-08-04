@@ -1,11 +1,11 @@
 # Question Box Project - Team Red Panda
 
-- GitGud 
-- This application is a question and answer platform, similar to Stack Overflow. 
+GitGud
+
+This application is a question and answer platform, similar to Stack Overflow. 
 
 ### View Project:
-The project is deployed on Netlify:
-https://gitgud-1.netlify.app/
+The project is deployed on Netlify: https://gitgud-1.netlify.app/
 
 ### Features:
 - Users can create an account.
@@ -19,7 +19,7 @@ https://gitgud-1.netlify.app/
 - Authenticated users have a profile page that lists their questions, answers, and favorite questions. 
 
 ### Future Features:
-Authenticated users can edit their own questions.
+- Authenticated users can edit their own questions.
 
 ### Installation:
 - Clone the repo with the command-line interface into your preferred location.
