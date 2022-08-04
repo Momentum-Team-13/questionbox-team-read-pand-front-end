@@ -63,6 +63,13 @@ body {
   max-width: 600px;
 }
 
+#active {
+  display: block;
+}
+
+#inActive {
+  display: none;
+}
 
 /* Navbar */
 
@@ -328,6 +335,8 @@ body {
   padding: .5em;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 41px;
 }
 
 .faveOn:hover {
@@ -343,6 +352,41 @@ body {
   width: 30px;
 }
 
+.optionBox {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.options {
+  display: flex;
+  text-align: right;
+  width: 50%;
+}
+
+
+.delete {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  color: red;
+  margin-right: 0;
+  padding: 0;
+  max-width: 50px;
+}
+
+.deleteMe {
+  display: flex;
+  justify-content: end;
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  padding: 0;
+}
+
+.delete:hover {
+  color:#00D9FF;
+  cursor: pointer;
+}
 /* User Profile Page  */
 
 .userQuestion {
