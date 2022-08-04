@@ -109,7 +109,7 @@ export default function ViewQuestions({ token }) {
     }
 
 
-    const [selectStyle, setSelectStyle] = useState('answerBox');
+    const [selectStyle, setSelectStyle] = useState('answer');
 
     // let handleSelectAnswer = () => {
     //     setSelectStyle('selectedAnswerBox')
@@ -138,24 +138,21 @@ export default function ViewQuestions({ token }) {
                         {!faveFind && 
                         <button className="faveOff" onClick={() => faveMaker()} ><img src="../images/star-off.png" alt="fave-icon"/></button>}
                     </div>
-<<<<<<< HEAD
                     {answer.map(answer => (<div className='answer'> <h3>{answer.user} answered:</h3>
                         <p>{answer.description}</p>
                     </div>))}
-=======
 
                     <div>
                         {answer.map((answer, index) => (
                             <div key={index} className={selectStyle} >
                                 <h3>{answer.user} answered:</h3>
                                 <p>{answer.description}</p>
-                                <button onClick={() => setSelectStyle('selectedAnswerBox')}>Select Answer</button>
+                                {/* <button onClick={() => setSelectStyle('selectedAnswerBox')}>Select Answer</button> */}
                                 {/* <button onClick={() => setLikeCount(likeCount + 1)}>👍 Likes {likeCount}</button> */}
                             </div>
                         ))}
                     </div>
 
->>>>>>> 3530259f8b991b8b4d8ad05bbbb5b0a95dc681a9
 
                     {/* {error && <div className="error">{error}</div>} */}
 

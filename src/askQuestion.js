@@ -106,7 +106,7 @@ export default function AskQuestion({ token }) {
             <div className="wrap">
                 <h2>Ask a Question</h2>
                 {error && <div className="error">{error}</div>}
-                <form id="ask-question-form" onSubmit={handleAskQuestion}>
+                <form id="ask-question-form" onSubmit={handleAskQuestion} className="questionForm">
                     <div className="controls-2">
                         <label htmlFor='question-title-field'>Question Title: </label>
                         <input
