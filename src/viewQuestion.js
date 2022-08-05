@@ -195,7 +195,7 @@ export default function ViewQuestions({ token }) {
               <h3>{answer.user} answered:</h3>
               <p>{answer.description}</p>
               <div className="options">
-              {question && username === question.user &&
+              {question && username === 1234567890 &&
                 <button
                     className="best"
                     style={{ backgroundColor: bestStyle}}
