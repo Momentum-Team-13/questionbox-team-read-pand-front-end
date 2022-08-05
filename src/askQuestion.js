@@ -35,8 +35,6 @@ export default function AskQuestion({ token }) {
                     },
                 })
             .then((res) => {
-                // console.log(res);
-                console.log(res.data);
                 setGameTitles(res.data);
             })
     }, [token]);
@@ -52,11 +50,8 @@ export default function AskQuestion({ token }) {
                     },
                 })
             .then((res) => {
-                console.log(res.data);
                 const updatedLength = res.data.length - 1;
-                console.log(updatedLength);
                 const currentPK = res.data[updatedLength].pk;
-                console.log(currentPK);
                 setLinkPK(currentPK+1)
             })
     }, [token]);
@@ -79,7 +74,6 @@ export default function AskQuestion({ token }) {
                     },
                 })
             .then((res) => {
-                console.log(res);
                 resetForm();
                 navigateTo(`/question/${linkPK}`)
             })

@@ -11,6 +11,8 @@ export default function ViewQuestions({ token }) {
   const [favorite, setFavorite] = useState(null);
   const [username, setUsername] = useLocalStorageState("libraryUsername", "");
   const [answer, setAnswers] = useState(null);
+  const [best, setBest] = useState({});
+  const [bestStyle, setBestStyle] = useState("black");
   const [handleAnswer, setHandleAnswer] = useState(answer)
   const [questionDescription, setQuestionDescription] = useState("");
   const [error, setError] = useState(null);
@@ -130,7 +132,7 @@ export default function ViewQuestions({ token }) {
         }
       )
       .then(() => {
-        setHandleAnswer(null);
+        setHandleAnswer(answer);
       })
       .catch((error) => {
         setError(error.message);
@@ -138,15 +140,15 @@ export default function ViewQuestions({ token }) {
       
   };
 
+ function bestAnswerSetter(answer){
+      setBest(answer)
+  }
+
   useEffect(() => {
     if (question && question.favorited_by.includes(username)) {
       setFaveQuestion("gold");
     }
   }, [question, username]);
-
-  const [selectStyle, setSelectStyle] = useState("answer");
-
-  const [likeCount, setLikeCount] = useState(0);
 
   return (
     <>
@@ -182,12 +184,26 @@ export default function ViewQuestions({ token }) {
           )}
           {answer && 
           <>
+          {best > 0 &&
+          <div className="answer bestOne">
+            <h3>{answer[{best}].user} said it best:</h3>
+            <p>{answer[{best}].description}</p>
+          </div>}
           {answer.map((answer) => (
             <div className="answer">
               {" "}
               <h3>{answer.user} answered:</h3>
               <p>{answer.description}</p>
               <div className="options">
+              {question && username === question.user &&
+                <button
+                    className="best"
+                    style={{ backgroundColor: bestStyle}}
+                    onClick={() => bestAnswerSetter(answer.id)}
+                  >
+                    <img src="../images/star-off.png" alt="fave-icon" />
+                  </button>
+              }
                 {username === answer.user && (
                     <button className="deleteMe">
                     <p onClick={() => deleteAnswer({answer})} className="delete">

@@ -312,21 +312,6 @@ body {
   margin: 8px;
 }
 
-.faveOff {
-  text-align: left;
-  background-color: black;
-  border: none;
-  border-radius: 10px;
-  padding: .5em;
-  display: flex;
-  align-items: center;
-}
-
-.faveOff:hover {
-  cursor: pointer;
-  background-color: magenta;
-}
-
 .faveOn {
   text-align: left;
   background-color: gold;
@@ -339,13 +324,29 @@ body {
   width: 41px;
 }
 
-.faveOn:hover {
-  cursor: pointer;
-  background-color: magenta;
+
+.best {
+  text-align: left;
+  border: none;
+  border-radius: 10px;
+  padding: .5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 41px;
+}
+.best img {
+  width: 30px;
 }
 
-.faveOff img {
-  width: 30px;
+.best:hover {
+  background-color:#FE00F7!important;
+  cursor:pointer;
+}
+
+.faveOn:hover {
+  cursor: pointer;
+  background-color: magenta!important;
 }
 
 .faveOn img {
